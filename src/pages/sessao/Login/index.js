@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
-
-import { useHistory } from "react-router-dom"
+import { FiLogIn } from "react-icons/fi"
+import { useHistory,Link } from "react-router-dom"
 import "./style.css"
 import "../../../global.css"
 import heroImg from "../../../assets/heroes.png"
@@ -40,6 +40,7 @@ export default function Logon() {
             onChange={e => setId(e.target.value)}
           />
           <button className="button" type="submit">Entrar</button>
+          <Link to="/cadastro"><FiLogIn className="i" color="#e02041" size={18}/>Não tenho cadastro</Link>
         </form>
       </section>
       <img src={heroImg} alt="Heros"/>
