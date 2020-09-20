@@ -18,6 +18,15 @@ export default function EntregaEdit() {
   async function edt(e){
     e.preventDefault()
 
+    if (dataEntrega === null || dataEntrega === "") {
+      alert("Preencha a data de entrega")
+      return
+    }
+    if (observacao === null || observacao === "") {
+      alert("Preencha a observacao")
+      return
+    }
+
     const data = {
         dataEntrega,
         observacao

@@ -17,6 +17,19 @@ export default function EntregaNew() {
   async function newEntrega(e){
     e.preventDefault()
 
+    if (IdPedido === null || IdPedido === "") {
+      alert("Preencha o Id do pedido")
+      return
+    }
+    if (dataEntrega === null || dataEntrega === "") {
+      alert("Preencha a data de entrega")
+      return
+    }
+    if (observacao  === null || observacao === "") {
+      alert("Preencha a Observacao")
+      return
+    }
+
     const data = {
       IdPedido,
       dataEntrega,

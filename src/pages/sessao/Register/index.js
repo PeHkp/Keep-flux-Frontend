@@ -69,6 +69,7 @@ export default function Register() {
           <input
             placeholder="WhatsApp"
             value={numero}
+            type="tel"
             onChange={e => setNumero(mask(unMask(e.target.value),['(99) 9 9999-9999']))}
           />
           <div className="input-group">

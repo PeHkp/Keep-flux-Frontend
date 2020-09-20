@@ -19,6 +19,19 @@ export default function ClientesEdit() {
   async function edt(e){
     e.preventDefault()
 
+    if (numero === null || numero === "") {
+      alert("Preencha o numero do cliente")
+      return
+    }
+    if (endereco === null || endereco === "") {
+      alert("Preencha o endereco")
+      return
+    }
+    if (email === null || email === "") {
+      alert("Preencha o Email")
+      return
+    }
+
     const data = {
         numero,
         endereco,

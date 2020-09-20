@@ -19,6 +19,27 @@ export default function ClienteNew() {
   async function newCliente(e) {
     e.preventDefault();
 
+    if (cpfDoComprador === null || cpfDoComprador === "") {
+      alert("Preencha o cpf Do Comprador")
+      return
+    }
+    if (nomeDoProduto === null || nomeDoProduto === "") {
+      alert("Preencha o nome do produto")
+      return
+    }
+    if (valor <= 0) {
+      alert("O preço deve ser maior que 0")
+      return
+    }
+    if (formaPagamento === null || formaPagamento === "") {
+      alert("Adicione uma Forma de pagamento")
+      return
+    }
+    if (quantidade <= 0) {
+      alert("a quantidade deve ser maior que 0")
+      return
+    }
+
     const data = {
       cpfDoComprador,
       nomeDoProduto,

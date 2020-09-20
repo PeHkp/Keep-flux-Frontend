@@ -21,6 +21,35 @@ export default function ClienteNew() {
   async function newCliente(e) {
     e.preventDefault();
 
+    if (nome === null || nome === "") {
+      alert("Preencha o nome do Cliente")
+      return
+    }
+    if (cpf === null || cpf === "") {
+      alert("Preencha o CPF")
+      return
+    }
+    if (numero === null || numero === "") {
+      alert("Preencha o Numero")
+      return
+    }
+    if (endereco === null || endereco === "") {
+      alert("Preencha a Endereço")
+      return
+    }
+    if (email === null || email === "") {
+      alert("Preencha o Email")
+      return
+    }
+    if (sexo === null || sexo === "") {
+      alert("Preencha o sexo")
+      return
+    }
+    if (nacimento === null || nacimento === "") {
+      alert("Preencha a data de nascimento")
+      return
+    }
+
     const data = {
       nome,
       cpf,

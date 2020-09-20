@@ -5,24 +5,48 @@ import { Link , useHistory } from "react-router-dom"
 import {FiArrowLeft} from "react-icons/fi"
 import api from "../../../services/api"
 
+import Dropzone from '../../../components/DropZone'
+
 export default function NewIncident() {
   const [title, setTitle] = useState("")
   const [description,setDescription] = useState("")
   const [value,setValue] = useState("")  
   const [quantidade,setQuantidade] = useState("") 
-  const [linkDaImagem,setLinkDaImagem] = useState("") 
+  const [selectedFile, setSelectedFile] = useState()
   const history = useHistory()
   const empresaId = localStorage.getItem("empresaId");
 
   async function newVaga(e){ 
-    e.preventDefault()
+    e.preventDefault();
 
-    const data = {
-      title,
-      description,
-      value,
-      quantidade,
-      linkDaImagem
+    const data = new FormData();
+
+    data.append('title', title);
+    data.append('description', description);
+    data.append('value', value);
+    data.append('quantidade', quantidade);
+    data.append('linkDaImagem', selectedFile);
+    
+    if (title === null || title === "") {
+      alert("Preencha o nome do produto")
+      return
+    }
+    if (description === null || description === "") {
+      alert("Preencha a descrição")
+      return
+    }
+    if (value <= 0) {
+      alert("O preço deve ser maior que 0")
+      return
+    }
+    if (quantidade <= 0) {
+      alert("a quantidade deve ser maior que 0")
+      
+      return
+    }
+    if (selectedFile === undefined) {
+      alert("Adicione uma imagem")
+      return
     }
 
     try {
@@ -74,10 +98,7 @@ export default function NewIncident() {
               type="number"
               onChange={e => setQuantidade(e.target.value)}
               placeholder="Quantidade do produto"/>
-              <input 
-              value={linkDaImagem}
-              onChange={e => setLinkDaImagem(e.target.value)}
-              placeholder="link da imagem"/>
+              <Dropzone onFileUploaded={setSelectedFile} />
               <div id="photos-preview"></div>
         <button className="button" type="submit">Cadastrar</button>
         </form>

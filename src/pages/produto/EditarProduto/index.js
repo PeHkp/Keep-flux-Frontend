@@ -15,6 +15,16 @@ export default function NewIncident() {
   async function edt(e) {
     e.preventDefault();
 
+    if (value <= 0) {
+      alert("O preço deve ser maior que 0")
+      return
+    }
+    if (quantidade <= 0) {
+      alert("a quantidade deve ser maior que 0")
+      
+      return
+    }
+
     const data = {
       value,
       quantidade,
