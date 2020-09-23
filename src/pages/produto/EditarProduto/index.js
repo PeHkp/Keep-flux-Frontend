@@ -6,9 +6,13 @@ import { FiArrowLeft } from "react-icons/fi";
 
 import api from "../../../services/api";
 
+import Modal from "../../../components/Modal";
+
 export default function NewIncident() {
   const [quantidade, setQuan] = useState("");
   const [value, setValue] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [mensagemModal, setmensagemModal] = useState("");
   const history = useHistory();
   const ProdId = localStorage.getItem("idProd");
 
@@ -16,12 +20,13 @@ export default function NewIncident() {
     e.preventDefault();
 
     if (value <= 0) {
-      alert("O preço deve ser maior que 0")
+      setmensagemModal("O preço deve ser maior que 0");
+      setModalVisible(true);
       return
     }
     if (quantidade <= 0) {
-      alert("a quantidade deve ser maior que 0")
-      
+      setmensagemModal("a quantidade deve ser maior que 0");
+      setModalVisible(true);
       return
     }
 
@@ -40,6 +45,8 @@ export default function NewIncident() {
   }
 
   return (
+    <div>
+    {modalVisible ? <Modal onClose={() => setModalVisible(false)} title={mensagemModal} /> : null}
     <div className="new-vaga-container">
       <div className="conteiner">
         <section>
@@ -72,6 +79,7 @@ export default function NewIncident() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

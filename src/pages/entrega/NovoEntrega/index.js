@@ -5,11 +5,15 @@ import { Link , useHistory } from "react-router-dom"
 import {FiArrowLeft} from "react-icons/fi"
 import api from "../../../services/api"
 import { mask, unMask } from 'remask'
+import Modal from "../../../components/Modal";
 
 export default function EntregaNew() {
   const [IdPedido, setIDPedido] = useState("")
   const [dataEntrega,setdataEntrega] = useState("")
-  const [observacao,setobservacao] = useState("")  
+  const [observacao,setobservacao] = useState("") 
+  
+  const [modalVisible, setModalVisible] = useState(false);
+  const [mensagemModal, setmensagemModal] = useState("");
   
   const history = useHistory()
   const empresaId = localStorage.getItem("empresaId");
@@ -18,15 +22,18 @@ export default function EntregaNew() {
     e.preventDefault()
 
     if (IdPedido === null || IdPedido === "") {
-      alert("Preencha o Id do pedido")
+      setmensagemModal("Preencha o Id do pedido");
+      setModalVisible(true);
       return
     }
     if (dataEntrega === null || dataEntrega === "") {
-      alert("Preencha a data de entrega")
+      setmensagemModal("Preencha a data de entrega");
+      setModalVisible(true);
       return
     }
     if (observacao  === null || observacao === "") {
-      alert("Preencha a Observacao")
+      setmensagemModal("Preencha a Observacao");
+      setModalVisible(true);
       return
     }
 
@@ -51,7 +58,9 @@ export default function EntregaNew() {
   }
 
   return (
-    <div className="new-vaga-container">
+    <div>
+      {modalVisible ? <Modal onClose={() => setModalVisible(false)} title={mensagemModal} /> : null}
+      <div className="new-vaga-container">
       <div className="conteiner">
         <section>
           <img src={logoImg} alt="Be The Hero" />
@@ -83,5 +92,7 @@ export default function EntregaNew() {
         </form>
       </div>
     </div>
+    </div>
+    
   );
 }
