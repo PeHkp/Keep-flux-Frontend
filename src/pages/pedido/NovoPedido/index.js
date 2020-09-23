@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import { mask, unMask } from "remask";
 import api from "../../../services/api";
+import Modal from "../../../components/Modal";
 
 export default function ClienteNew() {
   const [cpfDoComprador, setcpf] = useState("");
@@ -13,6 +14,9 @@ export default function ClienteNew() {
   const [formaPagamento, setformaPagamento] = useState("");
   const [quantidade, setquantidade] = useState("");
 
+  const [modalVisible, setModalVisible] = useState(false);
+  const [mensagemModal, setmensagemModal] = useState("");
+
   const history = useHistory();
   const empresaId = localStorage.getItem("empresaId");
 
@@ -20,23 +24,28 @@ export default function ClienteNew() {
     e.preventDefault();
 
     if (cpfDoComprador === null || cpfDoComprador === "") {
-      alert("Preencha o cpf Do Comprador")
+      setmensagemModal("Preencha o cpf Do Comprador");
+      setModalVisible(true);
       return
     }
     if (nomeDoProduto === null || nomeDoProduto === "") {
-      alert("Preencha o nome do produto")
+      setmensagemModal("Preencha o nome do produto");
+      setModalVisible(true);
       return
     }
     if (valor <= 0) {
-      alert("O preço deve ser maior que 0")
+      setmensagemModal("O preço deve ser maior que 0");
+      setModalVisible(true);
       return
     }
     if (formaPagamento === null || formaPagamento === "") {
-      alert("Adicione uma Forma de pagamento")
+      setmensagemModal("Adicione uma Forma de pagamento");
+      setModalVisible(true);
       return
     }
     if (quantidade <= 0) {
-      alert("a quantidade deve ser maior que 0")
+      setmensagemModal("a quantidade deve ser maior que 0");
+      setModalVisible(true);
       return
     }
 
@@ -62,6 +71,8 @@ export default function ClienteNew() {
   }
 
   return (
+    <div>
+    {modalVisible ? <Modal onClose={() => setModalVisible(false)} title={mensagemModal} /> : null}
     <div className="new-vaga-container">
       <div className="conteiner">
         <section>
@@ -115,6 +126,7 @@ export default function ClienteNew() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }
