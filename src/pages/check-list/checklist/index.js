@@ -29,7 +29,7 @@ export default function Home() {
 
   itemTamanhofim = itemTamanho;
 
-  itemCheckList.map((i) => {
+  itemCheckList.map( void function (i) {
     if (i.isCheck === 'Sim') {
       yes = yes + 1
     }else if (i.isCheck === 'Nao'){
