@@ -38,7 +38,7 @@ export default function Routes() {
           <Route path="/cadastro" component={Register} />
           <Route path="/login-dono" component={LoginDono} />
 
-          <Route path="/check-list" exact component={Checklist} />
+          <Route path="/check-list" component={Checklist} />
           <Route path="/edit-check-list" component={EditarCheckList} />
           <Route path="/novo-check-list" component={NovoChecklist} />
 
