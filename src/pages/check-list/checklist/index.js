@@ -29,7 +29,7 @@ export default function Home() {
 
   itemTamanhofim = itemTamanho;
 
-  itemCheckList.map( void function (i) {
+  itemCheckList.map( (i) => {
     if (i.isCheck === 'Sim') {
       yes = yes + 1
     }else if (i.isCheck === 'Nao'){
@@ -37,6 +37,7 @@ export default function Home() {
     } else {
       itemTamanhofim = itemTamanhofim -1
     }
+    return i;
   })
   percentual = (yes*100) / itemTamanhofim
 
