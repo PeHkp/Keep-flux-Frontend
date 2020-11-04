@@ -5,6 +5,10 @@ import Login from "./pages/sessao/Login"
 import Register from "./pages/sessao/Register"
 import LoginDono from "./pages/sessao/LoginDono"
 
+import Checklist from "./pages/check-list/checklist"
+import EditarCheckList from "./pages/check-list/editar-checklist"
+import NovoChecklist from "./pages/check-list/novo-checklist"
+
 import PainelVendedor from "./pages/paineis/PainelVendedor"
 import PainelGerente from "./pages/paineis/PainelGerente"
 
@@ -33,6 +37,10 @@ export default function Routes() {
           <Route path="/" exact component={Login} />
           <Route path="/cadastro" component={Register} />
           <Route path="/login-dono" component={LoginDono} />
+
+          <Route path="/check-list" exact component={Checklist} />
+          <Route path="/edit-check-list" component={EditarCheckList} />
+          <Route path="/novo-check-list" component={NovoChecklist} />
 
           <Route path="/painel-vendedor" component={PainelVendedor} />
           <Route path="/painel-gerente" component={PainelGerente} />

@@ -41,6 +41,9 @@ export default function Home() {
         <Link className="button" to="/entregas">
           Entregas
         </Link>
+        <Link className="button" to="/check-list">
+          Check list
+        </Link>
         <Link className="button" to="/help">
           Help
         </Link>
